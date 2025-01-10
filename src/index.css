@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body{
+  background-color: #f4f4f4;
+  position: relative;
+}
+
+*{
+  font-family: "Rubik", serif;
+  @apply border-gray
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+

@@ -1,0 +1,15 @@
+button {
+    font-size: 16px;
+    color: #333;
+    padding: 10px 20px;
+    transition: color 0.3s;
+  }
+  
+  button:hover {
+    color: #007bff;
+  }
+  
+  div {
+    font-family: Arial, sans-serif;
+  }
+  
