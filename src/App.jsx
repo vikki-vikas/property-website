@@ -30,6 +30,7 @@ import { MdFlashOn } from 'react-icons/md'
 import CustomSwiper from './components/customSwiper'
 import { TbDownload } from 'react-icons/tb'
 import { IoMdCall } from 'react-icons/io'
+import FloorPlanning from './components/floorPlanning'
 
 
 function App() {
@@ -453,6 +454,19 @@ function App() {
     )
   }
 
+  const content12 = () => {
+    return (
+      <Card>
+      <div className='border-b py-4' >
+        <p className='font-medium lg:text-lg' >Floor Planning</p>
+      </div>
+      <div className='mt-4' >
+        <FloorPlanning />
+      </div>
+    </Card>
+    )
+  }
+
 
   const sections = [
     { id: 1, title: 'Overview / Home', content: content1() },
@@ -461,11 +475,12 @@ function App() {
     { id: 4, title: 'More About Project', content: content4() },
     { id: 5, title: 'Photos & Videos: Tour this project virtually', content: content9() },
     { id: 6, title: 'Project Brochure', content: content10() },
+    { id: 12, title: 'Floor Planning', content: content12() },
     { id: 7, title: 'Tour This Project', content: content5() },
     { id: 8, title: 'Amenities', content: content6() },
     { id: 9, title: 'Ratings And Reviews', content: content7() },
     { id: 10, title: 'Frequently Asked Questions', content: content8() },
-    { id: 11, title: 'Contact Sellers', content: content11() }
+    { id: 11, title: 'Contact Sellers', content: content11() },
   ];
 
   return (
