@@ -8,6 +8,15 @@ import Collapsible from './components/collapsible'
 import c1 from '../public/content/c1.avif'
 import c2 from '../public/content/c2.avif'
 import c3 from '../public/content/c3.avif'
+import c4 from '../public/content/c4.avif'
+
+import b1 from '../public/content/b1.avif'
+import b2 from '../public/content/b2.avif'
+import b3 from '../public/content/b3.avif'
+
+import userImage from '../public/user.webp'
+
+
 import propertyIcon from '../public/icons/viewOnMap.3e01b667.svg'
 import Modal from './components/modal'
 import ReviewCard from './components/reviewCard'
@@ -17,6 +26,10 @@ import { IoSettings } from 'react-icons/io5'
 import { SiTicktick } from 'react-icons/si'
 import { FaTools } from 'react-icons/fa'
 import { cn } from './libs/utils'
+import { MdFlashOn } from 'react-icons/md'
+import CustomSwiper from './components/customSwiper'
+import { TbDownload } from 'react-icons/tb'
+import { IoMdCall } from 'react-icons/io'
 
 
 function App() {
@@ -24,6 +37,44 @@ function App() {
   const [showAll,setShowAll] = useState(false);
   const [showModal,setShowModal] = useState(false);
   const [showMorePhase2,setShowMorePhase2] = useState(false);
+
+  const slides =     [
+          {
+              img :  <img src={b1} />
+          },
+          {
+              img :  <img src={b2} />
+          },
+          {
+              img :  <img src={b3} />
+          },
+          {
+              img :  <img src={b3} />
+          },
+      ]
+
+
+  const slides2 =     [
+          {
+              img :  <img src={c1} />
+          },
+          {
+              img :  <img src={c2} />
+          },
+          {
+              img :  <img src={c3} />
+          },
+          {
+              img :  <img src={c4} />
+          },
+          {
+              img :  <img src={c1} />
+          },
+          {
+              img :  <img src={c2} />
+          }
+      ]
+
   // const divRef = useRef(null); // Reference to the div
 
     const sectionRefs = useRef([]);
@@ -318,16 +369,103 @@ function App() {
     )
   }
 
+  const content10 = () => {
+    return (
+      <Card>
+      <div className='border-b py-4' >
+        <p className='font-medium lg:text-lg' >Project Brochure</p>
+      </div>
+      <div className='' >
+        <CustomSwiper slides={slides} />
+        <div className='grid w-full place-items-center mt-5' >
+          <a href="../public/content/browcher.pdf" download="CustomFileName.pdf" className='border border-blue px-4 p-2 rounded-md text-blue ' > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</a>
+        </div>
+      </div>
+    </Card>
+    )
+  }
+  const content9 = () => {
+    return (
+      <Card>
+      <div className='border-b py-4' >
+        <p className='font-medium lg:text-lg' >Photos & Videos: Tour this project virtually</p>
+      </div>
+      <div className='mt-4 grid grid-cols-2 md:grid-cols-4 gap-4' >
+
+        <div className='rounded-md overflow-hidden' >
+          <img src={c1} alt="" />
+        </div>
+        <div className='rounded-md overflow-hidden' >
+          <img src={c2} alt="" />
+        </div>
+        <div className='rounded-md overflow-hidden' >
+          <img src={c3} alt="" />
+        </div>
+        <div className='rounded-md overflow-hidden relative' >
+          <img src={c3} alt="" />
+            <div className='absolute inset-0 bg-black bg-opacity-50 grid place-items-center cursor-pointer' onClick={()=>setShowModal(true)} >
+              <p className='text-white font-medium text-xl text-center' >+ <br />24 More</p>
+            </div>
+        </div>
+      </div>
+    </Card>
+    )
+  }
+
+  const content11 = () => {
+    return (
+      <Card>
+      <div className='border-b py-4' >
+        <p className='font-medium lg:text-lg' >Contact Sellers</p>
+      </div>
+      <div className='mt-4 grid md:grid-cols-2 gap-4 gap-x-10' >
+
+          <div className='flex justify-between items-center' >
+            <div className='flex gap-2 items-center' >
+              <div className='w-10 h-10' >
+                <img src={userImage} className='w-full h-full object-cover' alt="" />
+              </div>
+              <div className='text-xs' >
+                <p className='font-semibold' >Ghan Developres</p>
+                <p className='opacity-30' >developer</p>
+                <p className='font-semibold'>47.79L - 60L</p>
+              </div>
+            </div>
+            <button className='text-xs bg-green-300 px-4 p-2 rounded-md' >Contact</button>
+          </div>
+
+          <div className='flex justify-between items-center' >
+          <div className='flex gap-2 items-center' >
+              <div className='w-10 h-10' >
+                <img src={userImage} className='w-full h-full object-cover' alt="" />
+              </div>
+              <div className='text-xs' >
+                <p className='font-semibold' >Ghan Developres</p>
+                <p className='opacity-30' >developer</p>
+                <p className='font-semibold'>47.79L - 60L</p>
+              </div>
+            </div>
+            <button className='text-xs bg-green-300 px-4 p-2 rounded-md' >Contact</button>
+          </div>
+
+      </div>
+    </Card>
+    )
+  }
+
 
   const sections = [
     { id: 1, title: 'Overview / Home', content: content1() },
     { id: 2, title: 'Highlights', content: content2() },
     { id: 3, title: 'Around This Project', content: content3() },
     { id: 4, title: 'More About Project', content: content4() },
-    { id: 5, title: 'Tour This Project', content: content5() },
-    { id: 6, title: 'Amenities', content: content6() },
-    { id: 7, title: 'Ratings And Reviews', content: content7() },
-    { id: 8, title: 'Frequently Asked Questions', content: content8() }
+    { id: 5, title: 'Photos & Videos: Tour this project virtually', content: content9() },
+    { id: 6, title: 'Project Brochure', content: content10() },
+    { id: 7, title: 'Tour This Project', content: content5() },
+    { id: 8, title: 'Amenities', content: content6() },
+    { id: 9, title: 'Ratings And Reviews', content: content7() },
+    { id: 10, title: 'Frequently Asked Questions', content: content8() },
+    { id: 11, title: 'Contact Sellers', content: content11() }
   ];
 
   return (
@@ -496,6 +634,13 @@ function App() {
       */}
 
       <Header />
+      <div className='bg-gray w-full md:hidden sticky top-[48px] z-10 p-2 flex justify-between items-center' >
+          <p className='text-xs' >Ma Sarada Upavan Phase II</p>
+
+          <div className='rounded-full p-1 bg-green-400 text-white' >
+            <IoMdCall size={12} />
+          </div>
+      </div>
       {showModal && <Modal onClose={()=>setShowModal(false)} /> }
 
       <div className='grid place-items-center pb-4 lg:p-5 bg-white' >
@@ -519,7 +664,8 @@ function App() {
                   <img src={c1} className='object-cover w-full h-full' />
                 </div>
                 <div className=' col-span-4 lg:col-span-3 bg-slate-500 h-full overflow-hidden lg:hidden' onClick={()=>setShowModal(true)} >
-                  <img src={c1} className='object-cover w-full h-full' />
+                  {/* <img src={c1} className='object-cover w-full h-full' /> */}
+                  <CustomSwiper slides={slides2} navigation={false} />
                 </div>
                 <div className='space-y-2 lg:flex h-full flex-col hidden ' >
                   <div className='col-span-3 bg-slate-500 flex-1 ' >
@@ -556,7 +702,7 @@ function App() {
 
       </div>
 
-      <div className='grid place-items-center sticky top-[48px] z-50 bg-white' >
+      <div className='grid place-items-center sticky top-[84px] md:top-[48px] z-50 bg-white' >
         <div className=' w-full lg:w-5/6 overflow-hidden' >
             <div className='flex overflow-x-auto  no-scrollbar gap-3 lg:p-2' >
               {sections.map((section, index) => (
@@ -576,7 +722,7 @@ function App() {
         </div>
       </div>
 
-      <div className='lg:flex justify-center gap-5 px-5  lg:px-20 py-10' >
+      <div className='lg:flex justify-center gap-5 px-2 md:px-5  lg:px-20 py-10 space-y-4' >
 
         <div className='lg:flex-grow lg:w-96' >
 
@@ -597,10 +743,15 @@ function App() {
           </div>
         </div>
 
-        <div className='w-80' >
+        <div className='lg:w-80' >
         
-            <div className='bg-slate-50 sticky top-32 p-2  hidden lg:grid place-items-center' >
-              <div>
+            <div className='bg-slate-50 sticky top-32 p-2  grid place-items-center' >
+              <div className='space-y-4' >
+
+              <div className='p-2 bg-yellow-100 bg-opacity-50 px-4 border border-yellow-400 rounded-md text-sm ' >
+                <p><MdFlashOn className='text-yellow-600 inline' /> Nice choice. Let’s connect with the Developer</p>
+              </div>
+
                 <div className='p-3 bg-white rounded-md shadow-lg' >
                   <p className='font-medium' >Contact Seller</p>
                   <div className='flex gap-2 mt-2' >
@@ -645,10 +796,10 @@ function App() {
 
       </div>
 
-      <div className='fixed bottom-0 inset-x-0 bg-slate-100 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
+      <div className='fixed bottom-0 inset-x-0 bg-white border-t-pink-100 border-t-8 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
               <div className='flex gap-4' >
-                  <button className='flex-1 border-purple-500 border text-purple-500 text-xs' > Get Callback </button>
-                  <button className='flex-1 bg-green-300 text-xs' > Contact Developer </button>
+                  <button className='flex-1 border-purple-500 border text-purple-500 text-xs rounded-lg' > Get Callback </button>
+                  <button className='flex-1 bg-green-300 text-xs rounded-lg' > Contact Developer </button>
               </div>
       </div> 
 

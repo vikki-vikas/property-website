@@ -6,18 +6,15 @@ import c4 from './../../public/content/c4.avif'
 
 
 import React, { useRef, useState } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import CustomSwiper from './customSwiper';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 // import './styles.css';
 
-export default function App() {
-  const [swiperRef, setSwiperRef] = useState<any>(null);
+export default function Slider() {
+
+  const childRef = useRef<any>(null);
+  
   // Create array with 500 slides
   const [slides, setSlides] = useState(
     [
@@ -43,9 +40,11 @@ export default function App() {
   );
 
 
-  const slideTo = (index) => {
-    swiperRef.slideTo(index - 1, 0);
-  };
+  const slideTo = (index:number) => {
+    if (childRef.current) {
+      childRef.current.callChildFunction(index); // Invoke child function
+    }
+  }
 
   return (
     <>
@@ -63,33 +62,9 @@ export default function App() {
             </button>
         </div>
 
-      <Swiper
-        modules={[Virtual, Navigation, Pagination]}
-        onSwiper={setSwiperRef}
-        breakpoints={{
-          // When window width is >= 1024px
-          1024: {
-            slidesPerView: 2,
-          },
-          // Default (below 640px)
-          0: {
-            slidesPerView: 1,
-          },
-        }}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        virtual
-      >
-        {slides.map((slideContent, index) => (
-          <SwiperSlide key={index} virtualIndex={index}>
-            {slideContent.img}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <CustomSwiper slides={slides} ref={childRef} />
+
+
     </>
   );
 }
