@@ -6,6 +6,7 @@ const FloorPlanning = () => {
 
     const [activeIndex,setActiveIndex] = useState(0);
     const [activeSubIndex,setActiveSubIndex] = useState(0);
+    const [imageView,setImageView] = useState(0);
 
     const categoriesData = [
         {
@@ -15,6 +16,7 @@ const FloorPlanning = () => {
                 {
                     title : "1096 sq.ft",
                     image : f1,
+                    dImage : f2,
                     price : "78 L",
                     specificaions : [
                         {
@@ -54,12 +56,14 @@ const FloorPlanning = () => {
                 {
                     title : "1096 sq.ft",
                     image : f2,
+                    dImage : f1,
                     price : "78 L",
                     specificaions : []
                 },
                 {
                     title : "1096 sq.ft",
                     image : f1,
+                    dImage : f1,
                     price : "78 L",
                     specificaions : []
                 }
@@ -85,9 +89,17 @@ const FloorPlanning = () => {
                     return <p className={`min-w-max p-2 border-b-2 cursor-pointer ${activeSubIndex == subCatIndex && 'border-blue' }`} onClick={()=>{setActiveSubIndex(subCatIndex)}} >{subCate.title}</p>
                 })}
             </div>
-            <div className='grid place-items-center mt-5' >
+            <div className='grid place-items-center mt-5 relative' >
                 <p className='text-left font-semibold w-full' >₹ {categoriesData[activeIndex].subCategorys[activeSubIndex].price}</p>
-                <img src={categoriesData[activeIndex].subCategorys[activeSubIndex].image} alt="" />
+                <div className='absolute right-2 top-2 shadow-md rounded-full space-y-2 text-sm' >
+                    <div className={`w-8 h-8 rounded-full grid place-items-center cursor-pointer ${imageView == 0 && 'bg-blue text-white'} `} onClick={()=>setImageView(0)} >
+                        <p className='text-center' >2D</p>
+                    </div>
+                    <div className={`w-8 h-8 rounded-full grid place-items-center cursor-pointer ${imageView == 1 && 'bg-blue text-white'} `} onClick={()=>setImageView(1)} >
+                        <p className='text-center' >3D</p>
+                    </div>
+                </div>
+                <img src={categoriesData[activeIndex].subCategorys[activeSubIndex][imageView == 0 ? 'image': 'dImage']} alt="" />
             </div>
 
             <div className='flex gap-x-4 overflow-x-auto no-scrollbar' >

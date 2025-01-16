@@ -31,12 +31,17 @@ import CustomSwiper from './components/customSwiper'
 import { TbDownload } from 'react-icons/tb'
 import { IoMdCall } from 'react-icons/io'
 import FloorPlanning from './components/floorPlanning'
+import CustomGoogleMap from './components/googleMap'
+import Slider from './components/slider'
+import { TiTick } from 'react-icons/ti'
 
 
 function App() {
 
   const [showAll,setShowAll] = useState(false);
   const [showModal,setShowModal] = useState(false);
+  const [showDownloadModal,setShowDownloadModal] = useState(false);
+  const [isDownloaded,setIsDownloaded] = useState(false);
   const [showMorePhase2,setShowMorePhase2] = useState(false);
 
   const slides =     [
@@ -379,7 +384,7 @@ function App() {
       <div className='' >
         <CustomSwiper slides={slides} />
         <div className='grid w-full place-items-center mt-5' >
-          <a href="../public/content/browcher.pdf" download="CustomFileName.pdf" className='border border-blue px-4 p-2 rounded-md text-blue ' > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</a>
+          <button className='border border-blue px-4 p-2 rounded-md text-blue ' onClick={() => setShowDownloadModal(true)} > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</button>
         </div>
       </div>
     </Card>
@@ -458,7 +463,7 @@ function App() {
     return (
       <Card>
       <div className='border-b py-4' >
-        <p className='font-medium lg:text-lg' >Floor Planning</p>
+        <p className='font-medium lg:text-lg' >Price & Floor Plan</p>
       </div>
       <div className='mt-4' >
         <FloorPlanning />
@@ -467,6 +472,18 @@ function App() {
     )
   }
 
+  const content13 = () => {
+    return (
+      <Card>
+      <div className='border-b py-4' >
+        <p className='font-medium lg:text-lg' >Explore Neighbourhood - Map View</p>
+      </div>
+      <div className='mt-4' >
+        <CustomGoogleMap />
+      </div>
+    </Card>
+    )
+  }
 
   const sections = [
     { id: 1, title: 'Overview / Home', content: content1() },
@@ -476,6 +493,7 @@ function App() {
     { id: 5, title: 'Photos & Videos: Tour this project virtually', content: content9() },
     { id: 6, title: 'Project Brochure', content: content10() },
     { id: 12, title: 'Floor Planning', content: content12() },
+    { id: 13, title: 'Map View', content: content13() },
     { id: 7, title: 'Tour This Project', content: content5() },
     { id: 8, title: 'Amenities', content: content6() },
     { id: 9, title: 'Ratings And Reviews', content: content7() },
@@ -485,170 +503,81 @@ function App() {
 
   return (
     <>
-      {/* <Header />
-      {showModal && <Modal onClose={()=>setShowModal(false)} /> }
 
-      <div className='grid place-items-center lg:p-5 bg-white' >
-          <div className='lg:w-5/6 grid lg:grid-cols-2 order-2 lg:order-1 px-5 lg:px-0' >
-              <div className='space-y-3 grid ' >
-                <p className='font-medium lg:text-xl order-2 lg:order-1' >Ma Sarada Upavan Phase II</p>
-                <p className='text-sm order-1 lg:order-2 opacity-60 lg:opacity-100'>By Ma Sarada Constructions Bangalore</p>
-                <p className='opacity-60 text-xs lg:text-base  order-3 lg:order-3' >Bommasandra, South Bangalore, South Bangalore, Bande Nalla Sandra</p>
-              </div>
-              <div className='lg:text-right space-y-3 mt-4 lg:mt-0 bg-slate-50 lg:bg-transparent' >
-                <p className='opacity-60 text-xs lg:hidden' >Price</p>
-                <p className='font-medium lg:text-xl' >76.71 L - 1.51 Cr</p>
-                <p className='text-blue text-xs lg:text-base' >EMI starts at ₹38.08 K</p>
-                <button className='bg-blue px-4 p-2 text-white font-medium rounded hidden lg:inline' >Contact Developer</button>
-              </div>
-          </div>
-
-          <div className='lg:w-5/6 lg:mt-5 order-1 lg:order-2' >
-            <div className='grid grid-cols-4 gap-2 lg:h-96 overflow-hidden' >
-                <div className=' col-span-4 lg:col-span-3 bg-slate-500 h-full overflow-hidden hidden lg:block' >
-                  <img src={c1} className='object-cover w-full h-full' />
-                </div>
-                <div className=' col-span-4 lg:col-span-3 bg-slate-500 h-full overflow-hidden lg:hidden' onClick={()=>setShowModal(true)} >
-                  <img src={c1} className='object-cover w-full h-full' />
-                </div>
-                <div className='space-y-2 lg:flex h-full flex-col hidden ' >
-                  <div className='col-span-3 bg-slate-500 flex-1 ' >
-                    <img src={c2} className='object-cover w-full h-full' />
-                  </div>
-                  <div className='col-span-3 bg-slate-500 flex-1 relative' >
-                    <img src={c3} className='object-cover w-full h-full' />
-                    <div className='absolute inset-0 bg-black bg-opacity-70 grid place-items-center cursor-pointer' onClick={()=>setShowModal(true)} >
-                      <p className='text-white font-medium text-xl text-center' >+ <br />24 More</p>
-                    </div>
-                  </div>
-                </div>
-            </div> 
-          </div>
-
-          <div className='hidden w-5/6 mt-5 lg:grid grid-cols-4 items-center text-center order-3 lg:order-3' >
-              <div className='border-r' >
-                <p>2, 3 BHK Apartments</p>
-                <span>Configurations</span>
-              </div>
-              <div className='border-r' >
-                <p>Sep, 2025</p>
-                <span>Possession Starts</span>
-              </div>
-              <div className='border-r' >
-                <p>Price on request</p>
-                <span>Avg. Price</span>
-              </div>
-              <div>
-                <p>1066 - 2097 sq.ft.</p>
-                <span>(Super Builtup Area)</span>
-              </div>
-          </div>
-
-      </div>
-
-      <div className='grid place-items-center sticky top-[48px] z-50 bg-white' >
-
-        <div className=' w-full lg:w-5/6 overflow-hidden' >
-            <div className='flex overflow-x-auto  no-scrollbar gap-3 lg:p-2' >
-              {sections.map((section, index) => (
-                <button className={cn("border-b-4 border-white min-w-max text-xs lg:text-sm pt-2 ",{
-                  
-                })}
-                  key={section.id}
-                  onClick={() => scrollToSection(index)}
-                  style={{
-                    borderColor: activeTab === index ? '#007bff' : '#f8f9fa',
-                  }}
-                >
-                  {section.title}
-                </button>
-              ))}
-            </div>
-        </div>
-
-      </div>
-
-      <div className='grid place-items-center mt-5 ' >
-
-        <div className='lg:w-5/6 grid grid-cols-8 gap-4 p-2 lg:p-0 relative h-screen' >
-
-          <div className=' col-span-8 lg:col-span-5 space-y-4 lg:overflow-auto no-scrollbar'  ref={divRef}
-              onScroll={handleScroll} >
-
-            {sections.map((section, index) => (
-              <div
-                key={section.id}
-                ref={(el) => {
-                  if (el) {
-                    // Assign only if the element exists
-                    sectionRefs.current[index] = el;
-                  }
-                }}
-              >
-                {section.content}
-              </div>
-            ))}
-
-          </div>
-
-          <div className='bg-slate-50 p-2 sticky col-span-3 hidden lg:grid place-items-center' >
-
-            <div>
-              <div className='p-3 bg-white rounded-md shadow-lg' >
-                <p className='font-medium' >Contact Seller</p>
-                <div className='flex gap-2 mt-2' >
-                    <div>
-                      <div className='bg-green-700 p-3 rounded-md text-center text-sm text-white' >
-                        <p>MS</p>
-                      </div>
-                    </div>
-                    <div className='text-xs' >
-                      <p className='font-bold' >Ma Sarada Constructions</p>
-                      <span>Developer</span>
-                      <p>+9189045</p>
-                    </div>
-                </div>
-
-                <div className='text-sm mt-5' >
-                  <p className='font-medium' >Please share your contact</p>
-                  <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Name' />
-                  <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Phone' />
-                  <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Email' />
-                </div>
-              </div>
-
-              <div className='text-xs font-medium mt-5 space-y-2' >
-                <div>
-                <input type="checkbox" className='mt-0' /> <span>I agree to be contacted by Housing and agents via WhatsApp, SMS, phone, email etc</span>
-                </div>
-                <div>
-                  <input type="checkbox" className='mt-0' /> <span>I am interested in Home Loans</span>
-                </div>
-              </div>
-
-              <button className='bg-slate-500 rounded-md p-2 text-center text-sm font-medium w-full mt-5 text-white' >Get Contact Details</button>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div className='footer lg:bg-black h-36 mt-10 '  >
-
-      </div>
-
-      <div className='fixed bottom-0 inset-x-0 bg-slate-100 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
-              <div className='flex gap-4' >
-                  <button className='flex-1 border-purple-500 border text-purple-500 text-xs' > Get Callback </button>
-                  <button className='flex-1 bg-green-300 text-xs' > Contact Developer </button>
-              </div>
-      </div> 
-      */}
 
       <Header />
+      {showModal && <Modal onClose={()=>setShowModal(false)} >
+            <div className='grid grid-cols-2 text-white' >
+                <div>
+                    <p>Ma Sarada Upavan Phase II</p>
+                    <p>₹76.71 L - 1.51 Cr</p>
+                </div>
+                <div className='hidden lg:block' >
+                    <button className='bg-green-600 p-2 px-4 rounded-md float-right' >Contact Developer</button>
+                </div>
+            </div>
+            <Slider />
+      </Modal> }
+
+      {showDownloadModal && <Modal onClose={()=>setShowDownloadModal(false)} >
+            <div className='grid place-items-center' >
+              {isDownloaded ? <div className='p-3 bg-white md:w-1/3 rounded-md shadow-lg grid place-items-center gap-2' >
+                  <div className='bg-green-400 rounded-full p-2' >
+                    <TiTick size={35} className='text-white' />
+                  </div>
+                  <p>Congratulations</p>
+                  <p className='text-sm' >Your brochure is starting to download</p>
+                  <div className='mt-5 space-y-6' >
+                      <p>You can contact seller for more details</p>
+                      <div className='flex gap-2 mt-2 justify-center' >
+                        <div>
+                          <div className='bg-green-700 p-3 rounded-full text-center text-sm text-white' >
+                            <p>MS</p>
+                          </div>
+                        </div>
+                        <div className='text-xs' >
+                          <p className='font-bold' >Ma Sarada Constructions</p>
+                          <span>Developer</span>
+                          <p>+9189045</p>
+                        </div>
+                      </div>
+                      <button className='w-full p-2 text-white bg-blue rounded-md text-sm' >Contact Developer</button>
+                  </div>
+                </div> :
+              <div className='p-3 bg-white md:w-1/3 rounded-md shadow-lg' >
+                  <p className='font-medium' >Contact Seller</p>
+                  <div className='flex gap-2 mt-2' >
+                      <div>
+                        <div className='bg-green-700 p-3 rounded-md text-center text-sm text-white' >
+                          <p>MS</p>
+                        </div>
+                      </div>
+                      <div className='text-xs' >
+                        <p className='font-bold' >Ma Sarada Constructions</p>
+                        <span>Developer</span>
+                        <p>+9189045</p>
+                      </div>
+                  </div>
+
+                  <div className='text-sm mt-5' >
+                    <p className='font-medium' >Please share your contact</p>
+                    <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Name' />
+                    <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Phone' />
+                    <input type="text" className='bg-transparent border-b p-2 w-full text-sm mt-5' placeholder='Email' />
+                    <select className='bg-transparent border-b p-2 w-full text-sm mt-5' >
+                      <option value="">Select Type</option>
+                      <option value="">2 BHK</option>
+                      <option value="">3 BHK</option>
+                    </select>
+                  </div>
+
+                  <a href="../public/content/browcher.pdf" onClick={()=>setIsDownloaded(true)} download="CustomFileName.pdf" className='border border-blue px-4 p-2 rounded-md text-blue w-full mt-5 block text-center ' > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</a>
+
+              </div>
+              }
+            </div>
+      </Modal> }
+
       <div className='bg-gray w-full md:hidden sticky top-[48px] z-10 p-2 flex justify-between items-center' >
           <p className='text-xs' >Ma Sarada Upavan Phase II</p>
 
@@ -656,7 +585,7 @@ function App() {
             <IoMdCall size={12} />
           </div>
       </div>
-      {showModal && <Modal onClose={()=>setShowModal(false)} /> }
+      
 
       <div className='grid place-items-center pb-4 lg:p-5 bg-white' >
           <div className='lg:w-5/6 grid lg:grid-cols-2 order-2 lg:order-1 px-5 lg:px-0' >
@@ -667,8 +596,8 @@ function App() {
               </div>
               <div className='lg:text-right space-y-3 mt-4 lg:mt-0 bg-slate-50 lg:bg-transparent' >
                 <p className='opacity-60 text-xs lg:hidden' >Price</p>
-                <p className='font-medium lg:text-xl' >76.71 L - 1.51 Cr</p>
-                <p className='text-blue text-xs lg:text-base' >EMI starts at ₹38.08 K</p>
+                <p className='font-medium lg:text-xl' >₹ 76.71 L - 1.51 Cr</p>
+                {/* <p className='text-blue text-xs lg:text-base' >EMI starts at ₹38.08 K</p> */}
                 <button className='bg-blue px-4 p-2 text-white font-medium rounded hidden lg:inline' >Contact Developer</button>
               </div>
           </div>
@@ -737,9 +666,9 @@ function App() {
         </div>
       </div>
 
-      <div className='lg:flex justify-center gap-5 px-2 md:px-5  lg:px-20 py-10 space-y-4' >
+      <div className='lg:flex justify-center gap-5 px-2 md:px-5  lg:px-20 py-10 space-y-4 w-full' >
 
-        <div className='lg:flex-grow lg:w-96' >
+        <div className='lg:flex-grow lg:w-[60%]' >
 
           <div className='w-full overflow-clip space-y-4' >
             {sections.map((section, index) => (
@@ -758,7 +687,7 @@ function App() {
           </div>
         </div>
 
-        <div className='lg:w-80' >
+        <div className='lg:w-[40%]' >
         
             <div className='bg-slate-50 sticky top-32 p-2  grid place-items-center' >
               <div className='space-y-4' >
@@ -811,12 +740,12 @@ function App() {
 
       </div>
 
-      <div className='fixed bottom-0 inset-x-0 bg-white border-t-pink-100 border-t-8 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
+      {!showDownloadModal &&<div className='fixed bottom-0 inset-x-0 bg-white border-t-pink-100 border-t-8 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
               <div className='flex gap-4' >
                   <button className='flex-1 border-purple-500 border text-purple-500 text-xs rounded-lg' > Get Callback </button>
                   <button className='flex-1 bg-green-300 text-xs rounded-lg' > Contact Developer </button>
               </div>
-      </div> 
+      </div> }
 
 
 
