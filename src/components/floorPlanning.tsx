@@ -68,14 +68,194 @@ const FloorPlanning = () => {
                     specificaions : []
                 }
             ]
-        }
+        },
+        {
+            categoryName : "3 BHK Aparmrnt",
+            price : "76.71L - 1.08cr",
+            subCategorys : [
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f2,
+                    price : "78 L",
+                    specificaions : [
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                    ]
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f2,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                }
+            ]
+        },
+        {
+            categoryName : "2 BHK Duplex",
+            price : "76.71L - 1.08cr",
+            subCategorys : [
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f2,
+                    price : "78 L",
+                    specificaions : [
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                    ]
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f2,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                }
+            ]
+        },
+        {
+            categoryName : "3 BHK Duplex",
+            price : "76.71L - 1.08cr",
+            subCategorys : [
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f2,
+                    price : "78 L",
+                    specificaions : [
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                        {
+                            title : "Attached Balcony with Bedroom 1",
+                            subTitle : "11' 0'' X 4' 0''"
+                        },
+                        {
+                            title : "Bedroom 1",
+                            subTitle : "11' 0'' X 11' 0''"
+                        },
+                    ]
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f2,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                },
+                {
+                    title : "1096 sq.ft",
+                    image : f1,
+                    dImage : f1,
+                    price : "78 L",
+                    specificaions : []
+                }
+            ]
+        },
     ]
 
   return (
     <>
-        <div className='flex gap-4 text-xs' >
+        <div className='flex gap-4 text-xs overflow-auto no-scrollbar' >
             {categoriesData.map((category:any,catIndex:number)=>{
-                return <div className={`bg-gray border-b-2 cursor-pointer ${activeIndex == catIndex && 'border-blue' } p-2 px-4`}
+                return <div className={`bg-gray border-b-2 cursor-pointer ${activeIndex == catIndex && 'border-blue' } p-2 px-4 min-w-max`}
                 onClick={()=>{setActiveIndex(catIndex)}}
                 >
                     <p>{category.categoryName}</p>

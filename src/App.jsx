@@ -571,7 +571,7 @@ function App() {
                     </select>
                   </div>
 
-                  <a href="../public/content/browcher.pdf" onClick={()=>setIsDownloaded(true)} download="CustomFileName.pdf" className='border border-blue px-4 p-2 rounded-md text-blue w-full mt-5 block text-center ' > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</a>
+                  <a href="./content/browcher.pdf" onClick={()=>setIsDownloaded(true)} download="CustomFileName.pdf" className='border border-blue px-4 p-2 rounded-md text-blue w-full mt-5 block text-center ' > <TbDownload className='mr-1 mb-1 inline ' /> Download Brochure</a>
 
               </div>
               }
@@ -742,8 +742,8 @@ function App() {
 
       {!showDownloadModal &&<div className='fixed bottom-0 inset-x-0 bg-white border-t-pink-100 border-t-8 p-2 py-6 shadow-2xl z-[250] rounded-ss-lg rounded-se-lg lg:hidden ' >
               <div className='flex gap-4' >
-                  <button className='flex-1 border-purple-500 border text-purple-500 text-xs rounded-lg' > Get Callback </button>
-                  <button className='flex-1 bg-green-300 text-xs rounded-lg' > Contact Developer </button>
+                  <button className='flex-1 border-purple-500 border text-purple-500 text-xs rounded-lg' onClick={() => setShowDownloadModal(true)} > Get Callback </button>
+                  <button className='flex-1 bg-green-300 text-xs rounded-lg' onClick={() => setShowDownloadModal(true)} > Contact Developer </button>
               </div>
       </div> }
 
